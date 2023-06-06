@@ -12,15 +12,27 @@ export default function Comics(props) {
   const [comics, setComics] = useState([]);
   const [filter, setFilter] = useState("b");
   const [offset, setOffset] = useState(200);
-  const { get, loading } = useFetch();
+  const [toSendData, setToSendData] = useState([]);
+  const [dataSent, setDataSent] = useState(false);
+  const { get, post } = useFetch();
+
   useEffect(() => {
     get(`https://gateway.marvel.com/v1/public/comics?titleStartsWith=${filter}&orderBy=title&offset=${offset}`)
       .then((data) => {
         setComics(data.data.results);
+        setToSendData(data.data.etag)
       })
       .catch((error) => console.log("Could not load comics", error));
   }, [offset, filter]);
 
+  useEffect(() => {
+    post(`https://marvel-backend.up.railway.app/api/v1/savecomics`,toSendData)
+      .then(() => {
+        setDataSent(true)
+      })
+      .catch((error) => console.log("Could not sent comics", error));
+  }, [comics]);
+ 
   const handleLetterClick = (letter) => {
     // 👇️ take the parameter passed from the Child component
     setFilter(letter);
