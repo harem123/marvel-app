@@ -6,14 +6,13 @@ import Container from '@mui/material/Container';
 import marvelIcon from '../../static/images/icons/icons8-marvel-70.png'
 
 function TopBar() {
-  
   return (
     <AppBar position="sticky" style={{ marginBottom: '25px' }} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <div style={{ marginRight: '25px' }}>
-        <img width="70" height="70" src={marvelIcon} alt="marvel"/>
-        </div>
+          <div style={{ marginRight: '25px' }}>
+            <img width="70" height="70" src={marvelIcon} alt="marvel" />
+          </div>
           <Typography
             variant="h5"
             noWrap
@@ -27,11 +26,9 @@ function TopBar() {
               textDecoration: 'none',
             }}
           >
-             COMICS APP
+            COMICS APP
           </Typography>
-          
         </Toolbar>
-        
       </Container>
     </AppBar>
   );

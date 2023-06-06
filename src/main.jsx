@@ -7,11 +7,7 @@ import { ProSidebarProvider } from "react-pro-sidebar";
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-    <ProSidebarProvider>
-    
-    <App />
-    
-    </ProSidebarProvider>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 )

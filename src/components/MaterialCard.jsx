@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -34,8 +33,8 @@ export default function MaterialCard(props) {
   return (
     <Card sx={{ maxWidth: 360 }}>
       <CardHeader
-        title= {details.title}
-        subheader= {details.dates[0].date}
+        title={details.title}
+        subheader={details.dates[0].date}
       />
       <CardMedia
         component="img"
@@ -50,7 +49,7 @@ export default function MaterialCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary">
           Creators
         </Typography>
         <ExpandMore
@@ -64,40 +63,22 @@ export default function MaterialCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          
           <Typography paragraph>
             List of creators:
           </Typography>
           <Typography paragraph>
-          {details.creators.items.map((creator)=> (
-             <div style={{ width: '100%' }}>
-             <Box
-               component="div"
-               sx={{
-                 display: 'inline',
-                 p: 1,
-                 m: 1,
-                 
-                
-               }}
-             >
-             
-         {creator.name}
-        
-             </Box>
-             <Box
-               component="div"
-               sx={{
-                 display: 'inline',
-                 p: 1,
-                 m: 1,}}
-             >
-               
-          {creator.role}
-        
-             </Box>
-           </div>       
-        ))}
+            {details.creators.items.map((creator) => (
+              <div style={{ width: '100%' }}>
+                <Box
+                  component="div"
+                  sx={{
+                    display: 'inline', p: 1, m: 1,
+                  }}
+                >
+                  {creator.name}
+                </Box>
+              </div>
+            ))}
           </Typography>
         </CardContent>
       </Collapse>

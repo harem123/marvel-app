@@ -13,15 +13,13 @@ export default function Comics(props) {
   const [filter, setFilter] = useState("b");
   const [offset, setOffset] = useState(200);
   const { get, loading } = useFetch();
-
   useEffect(() => {
     get(`https://gateway.marvel.com/v1/public/comics?titleStartsWith=${filter}&orderBy=title&offset=${offset}`)
       .then((data) => {
         setComics(data.data.results);
-        
       })
       .catch((error) => console.log("Could not load comics", error));
-  }, [offset,filter]);
+  }, [offset, filter]);
 
   const handleLetterClick = (letter) => {
     // 👇️ take the parameter passed from the Child component
@@ -35,33 +33,29 @@ export default function Comics(props) {
   };
 
   return (
-
     <div className="comics-layout">
-      <TopBar/>
+      <TopBar />
       <div className="alphabetBar">
-        <AlphabetNavBar onLetterClick={handleLetterClick}/>
+        <AlphabetNavBar onLetterClick={handleLetterClick} />
       </div>
-      <Typography variant = 'h3' style={{color: 'secondary'}}>
+      <Typography variant='h3' style={{ color: 'secondary' }}>
         COMICS
       </Typography>
-      <Typography variant = 'h4'>
+      <Typography variant='h4'>
         Take a look at our comics
       </Typography>
-     
-      
       <Box justifyContent="center" marginTop={2} display="flex" marginBottom={2}>
-      <Grid container spacing={1} justifyContent="center">
-        {comics.map((comic)=> (
-        <Grid item xs={12} sm={6} md={4} key={comic.id}>
-       <MaterialCard details = {comic} />
-       </Grid>
-       
-        ))}
-      </Grid>
+        <Grid container spacing={1} justifyContent="center">
+          {comics.map((comic) => (
+            <Grid item xs={12} sm={6} md={4} key={comic.id}>
+              <MaterialCard details={comic} />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
       <Box justifyContent="center" marginTop={2} display="flex" marginBottom={2}>
-        <PagesButtons handlePageClick={handlePageClick}/>
-        </Box>
+        <PagesButtons handlePageClick={handlePageClick} />
+      </Box>
     </div>
   );
 }
