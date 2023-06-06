@@ -15,7 +15,7 @@ export default function Comics(props) {
   const { get, loading } = useFetch();
 
   useEffect(() => {
-    get(`http://gateway.marvel.com/v1/public/comics?titleStartsWith=${filter}&orderBy=title&offset=${offset}`)
+    get(`https://gateway.marvel.com/v1/public/comics?titleStartsWith=${filter}&orderBy=title&offset=${offset}`)
       .then((data) => {
         setComics(data.data.results);
         
