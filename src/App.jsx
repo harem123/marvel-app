@@ -6,17 +6,13 @@ import Home from "./scenes/home/Home.jsx"
 function App() {
   
   return (
-  
     <div className="app"> 
-    
     <main className="content">
-      
      <Routes>
       <Route path="/" element={<Home/>}/>
      </Routes>
     </main>
     </div>
-    
   )
 }
 
