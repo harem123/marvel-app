@@ -23,9 +23,9 @@ export default function useFetch() {
     });
   }
 
-  function post(url, body) {
+  function post(url2, body) {
     return new Promise((resolve, reject) => {
-      fetch(url, {
+      fetch(url2, {
         method: "post",
         headers: {
             "Content-Type": "application/json",

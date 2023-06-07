@@ -28,7 +28,7 @@ export default function Comics(props) {
   }, [offset, filter]);
 
   useEffect(() => {
-    post(`https://marvel-backend.up.railway.app/api/v1/savecomics`,toSendData)
+    post("https://marvel-backend.up.railway.app/api/v1/savecomics",toSendData)
       .then(() => {
         setDataSent(true)
       })
